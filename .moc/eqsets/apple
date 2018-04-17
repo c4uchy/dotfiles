@@ -1,0 +1,14 @@
+#Sony Ericsson MEGA BASS
+#Just little eqset created to imitate work of SE MEGA BASS
+EQSET
+0  0.00
+32 1.35  -4.5
+64 1.35 -1.5
+125 1.35 -3.5
+250 1.35 -0.5
+500 1.35 -1.5
+1000 1.35 -2.5
+2000 1.35 -0.5
+4000 1.35 1.5
+8000 1.35 3.5
+16000 1.35 0.5

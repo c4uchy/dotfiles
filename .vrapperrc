@@ -1,0 +1,8 @@
+" IME : insertMode to cmdMode
+" set imd
+
+" ctrl+j to esc
+map <C-j> <C-[>
+imap <C-j> <C-[>
+cmap <C-j> <C-[>
+

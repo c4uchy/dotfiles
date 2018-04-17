@@ -1,0 +1,73 @@
+
+URxvt.geometry:             80x25
+URxvt.saveLines:            10000
+
+!! Fonts
+URxvt.allow_bold:           false
+URxvt.font: xft:Inconsolata\ for\ Powerline:size=11, xft:IPAGothic:size=10
+
+!! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+!! Perl extensions
+URxvt.perl-ext-common:      default,url-select,keyboard-select,selection-to-clipboard,resize-font
+! url-select 
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.launcher:          /usr/bin/xdg-open
+URxvt.url-select.underline:          true
+! keyboard-select
+URxvt.keysym.M-Escape:           perl:keyboard-select:activate
+! resize-font
+URxvt.resize-font.smaller:          C-q
+URxvt.resize-font.bigger:           C-w
+! URxvt.matcher.button:       1
+! URxvt.urlLauncher:          google-chrome
+! URxvt.keysym.M-t:           perl:tabbedex:new_tab
+! URxvt.tabbed.no-tabbedex-keys: true
+
+
+! ! Cursor
+URxvt.cursorUnderline:      false
+
+
+! Color
+urxvt*depth: 32
+!urxvt*background: rgba:0000/0000/0200/c800
+urxvt*background: [80]#000000
+urxvt*foreground:           #c6c6c6
+!!blizzard orb colors
+! by xero <http://xero.nu>
+! Original http://www.xcolors.net/dl/blizzard-orb
+!
+!*.foreground:   #111111
+!*.background:   #fcfcfc
+!*.cursorColor:  #94B6CC
+! black
+*.color0:       #000000
+*.color8:       #000000
+! red
+*.color1:       #6688AA
+*.color9:       #6688AA
+! green
+!*.color2:       #94B6CC
+!*.color10:      #94B6CC
+*.color2:       #5fd7af
+*.color10:      #5fd7af
+! yellow
+*.color3:       #4C6E84
+*.color11:      #4C6E84
+! blue
+!*.color4:       #6688AA
+!*.color12:      #6688AA
+*.color4:       #5fafff
+*.color12:      #5fafff
+! magenta
+*.color5:       #94B6CC
+*.color13:      #94B6CC
+! cyan
+*.color6:       #4C6E84
+*.color14:      #4C6E84
+! white
+*.color7:       #87875f
+*.color15:      #87875f

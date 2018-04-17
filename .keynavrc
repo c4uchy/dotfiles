@@ -1,0 +1,45 @@
+# keynavrc
+
+### Start
+# at qutebrowser, not accept first click ( click 1, click 2 ) after start. 
+# "forQTbrowser.sh" solve this problem
+ctrl+semicolon start,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,sh "~/scripts/keynavClick/forQTbrowser.sh"
+#ctrl+semicolon start,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left,cut-up,cut-left
+
+### End
+semicolon end
+Escape end
+
+### Move slowly
+shift+h sh "xdotool mousemove_relative -- -5 0"
+shift+j sh "xdotool mousemove_relative 0 5"
+shift+k sh "xdotool mousemove_relative -- 0 -5"
+shift+l sh "xdotool mousemove_relative 5 0"
+
+### Move quickly
+h sh "xdotool mousemove_relative -- -50 0"
+j sh "xdotool mousemove_relative 0 50"
+k sh "xdotool mousemove_relative -- 0 -50"
+l sh "xdotool mousemove_relative 50 0"
+
+### Click
+#s click 1, end   # show popup
+#s sh "xdotool click 1"
+s click 1
+d click 2
+f click 3
+w click 4 # scroll up
+e click 5 # scroll down
+a click 6 # scroll to left
+g click 7 # scroll to right
+
+### Drag
+ctrl+s sh "xdotool mousedown 1"
+shift+s sh "xdotool mouseup 1"
+ctrl+d sh "xdotool mousedown 2"
+shift+d sh "xdotool mouseup 2"
+ctrl+f sh "xdotool mousedown 3"
+shift+f sh "xdotool mouseup 3"
+
+### History
+q history-back

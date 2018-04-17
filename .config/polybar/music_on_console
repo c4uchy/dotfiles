@@ -1,0 +1,19 @@
+#!/usr/bin/python
+
+import subprocess
+
+song = stdoutdata = subprocess.getoutput("mocp -Q %song")
+album = stdoutdata = subprocess.getoutput("mocp -Q %album")
+artist = stdoutdata = subprocess.getoutput("mocp -Q %artist")
+state = stdoutdata = subprocess.getoutput("mocp -Q %state")
+timeTotal = stdoutdata = subprocess.getoutput("mocp -Q %tt")
+timeCurrent = stdoutdata = subprocess.getoutput("mocp -Q %ct")
+psgrep = stdoutdata = subprocess.getoutput("ps aux | grep [m]ocp")
+#print(song + " by " + artist + " on " + album)
+if ( "STOP" in state or not psgrep):
+    print("")
+elif (not song or not album):
+    print(" " + state + " " + timeCurrent + " - " + timeTotal)
+else:
+    print(" " + song + " - " + artist)
+

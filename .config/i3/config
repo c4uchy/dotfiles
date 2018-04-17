@@ -1,0 +1,353 @@
+#   _ _____                         
+#  (_)___ /    __ _  __ _ _ __  ___ 
+#  | | |_ \   / _` |/ _` | '_ \/ __|
+#  | |___) | | (_| | (_| | |_) \__ \
+#  |_|____/   \__, |\__,_| .__/|___/
+#             |___/      |_|        
+
+
+set $mod Mod4
+set $term urxvt
+set $browser qutebrowser
+font pango:DejaVu Sans Mono 10
+floating_modifier $mod
+
+## start program
+# compositor
+exec --no-startup-id compton -b
+# keynav
+exec --no-startup-id keynav
+# dropbox
+exec --no-startup-id dropbox
+# mpd
+#exec --no-startup-id mpd
+# setup display
+exec --no-startup-id ~/scripts/monitor/setupDisplay.sh
+# redshift
+exec --no-startup-id redshift -t 6500:3700
+# set wallpaper
+#exec --no-startup-id feh --bg-scale ~/.config/i3/wall.png
+# pywal
+#exec --no-startup-id wal -f ~/.gruvboxDark.json -a 80
+## exec --no-startup-id wal -c
+## exec --no-startup-id wal -i ~/.config/i3/wall.png -a 80
+## exec --no-startup-id wal -R -a 80
+# polybar
+exec --no-startup-id ~/.config/polybar/launch.sh
+# setup Keybouard Layout
+exec --no-startup-id ~/scripts/keyboard/setKeyLayout.sh
+#exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
+# hhkb plug in/out daemon
+exec --no-startup-id python ~/scripts/keyboard/hhkb_event.py
+# bluetooth earphone daemon
+#exec --no-startup-id python ~/scripts/polybar/bt_bar.py
+# bluetooth keyboard daemon
+exec --no-startup-id python ~/scripts/keyboard/bt_keyboard.py
+# screenlock
+#exec --no-startup-id xss-lock -- i3lock -e -i ~/.config/i3/lock1HD.png &
+# start fcitx
+exec --no-startup-id fcitx
+
+
+## Needed for i3-gaps   
+hide_edge_borders both
+for_window [class="^.*"] border pixel 2
+gaps inner 10   
+gaps outer 0 
+bindsym $mod+t gaps inner all set 10; gaps outer all set 0
+bindsym $mod+Shift+t gaps inner all set 25; gaps outer all set 5
+bindsym $mod+s gaps inner current plus 5 
+bindsym $mod+Shift+s gaps inner current minus 5
+bindsym $mod+Shift+d gaps inner all set 0; gaps outer all set 0
+bindsym $mod+z gaps outer current plus 5
+bindsym $mod+Shift+z gaps outer current minus 5
+
+
+## start a terminal
+bindsym $mod+Return exec $term -name terminal
+bindsym $mod+Shift+Return exec $term -name floating
+
+
+## window
+for_window [class="URxvt" instance="floating"] floating enable
+for_window [class="VirtualBox" title="^Tails"] move workspace $ws5 
+for_window [class="map.MainApp"] floating enable,resize set 800 600 
+for_window [class="Arandr"] floating enable 
+for_window [class="Genymotion Player" instance="player"] floating enable,move down 
+#for_window [title="video0 - mpv"] floating enable 
+for_window [class="mpv"] floating enable, border none 
+for_window [title="video0 - mpv"] sticky enable 
+
+
+# Set colors
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+
+## border 
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive #000000 #000000 #000000 #000000
+client.unfocused        #000000 #000000 #000000 #000000
+
+
+
+## basic keybindings
+# kill focused window
+bindsym $mod+Shift+q kill
+# start rofi (a program launcher)
+bindsym $mod+d exec rofi -disable-history -show run
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+# alternativexly, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# split in horizontal orientation
+bindsym $mod+h split h
+# split in vertical orientation
+bindsym $mod+v split v
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# resize window (you can also use the mouse for that)
+bindsym $mod+Shift+y resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+u resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+i resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# focus the parent container
+#bindsym $mod+a focus parent
+# focus the child container
+#bindsym $mod+d focus child
+
+
+## workspace
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+#set $ws10 "10"
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+#bindsym $mod+0 workspace $ws10
+# move workspace
+bindsym $mod+Tab workspace back_and_forth
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+#bindsym $mod+Shift+0 move container to workspace $ws10
+
+
+## launch app keybindings
+# web browser
+bindsym $mod+w exec --no-startup-id $browser
+# web camera
+bindsym $mod+Shift+w exec --no-startup-id ~/scripts/camtoggle.sh
+# memo
+bindsym $mod+m exec $term -name floating -e vim ~/Dropbox/Memo/`date +"%y%m%d_%H%M_%S"`.md
+#bindsym $mod+Shift+m exec export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH" && $term -name floating -e ranger ~/Dropbox/Memo
+# spotify
+#bindsym $mod+Shift+m exec --no-startup-id spotify
+# arandr
+bindsym $mod+a exec --no-startup-id arandr
+# gtop
+bindsym $mod+g exec --no-startup-id xterm -e gtop
+# htop
+bindsym $mod+i exec $term -name floating -e htop
+# android
+bindsym $mod+Shift+g exec /opt/genymotion/player --vm-name b6435b36-62bb-4bad-b405-2ff21b5ee529 | "Custom Phone - 7.1.0 - API 25 - 768x1280"
+# kali linux
+bindsym $mod+Shift+h exec $term -name floating -e ~/scripts/sshVM/kali.sh
+# Lubuntu
+bindsym $mod+u exec $term -name floating -e ~/scripts/sshVM/lubuntu.sh
+# line
+#bindsym $mod+n exec ~/scripts/line.sh &
+# play video with link in clipbord
+bindsym $mod+Shift+v exec --no-startup-id mpv --autofit=80% `xsel -b -o`; workspace $ws9
+# mocp
+bindsym $mod+o exec $term -name floating -e mocp -T transparent-background
+# ranger
+bindsym $mod+r exec export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH" && $term -name terminal -e ranger
+
+
+## operation keybindings
+bindsym $mod+Shift+x exec shutdown now
+bindsym $mod+Shift+BackSpace exec reboot
+# screenshot
+bindsym $mod+p exec --no-startup-id scrot -u -e 'mv $f ~/Pictures/screenshot/'
+bindsym $mod+Shift+p exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshot/'
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# relaunch polybar
+bindsym $mod+c exec --no-startup-id ~/.config/polybar/launch.sh
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+# Alsa audio
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle # mute sound
+#
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
+## for HHKB Pro
+bindsym Pause exec --no-startup-id light -A 5 # increase screen brightness
+bindsym Scroll_Lock exec --no-startup-id light -U 5 # decrease screen brightness
+#
+# Media player controls
+#bindsym XF86AudioPlay exec ~/scripts/mpdPlayPause.sh
+#bindsym XF86AudioNext exec mpc next
+#bindsym XF86AudioPrev exec mpc prev
+##bindsym XF86AudioPlay exec --no-startup-id mocp --toggle-pause
+##bindsym XF86AudioStop exec --no-startup-id mocp --stop
+##bindsym XF86AudioNext exec --no-startup-id mocp --next
+##bindsym XF86AudioPrev exec --no-startup-id mocp --previous
+bindsym XF86AudioPlay exec --no-startup-id ~/scripts/ctlMedia/togglePause.sh
+bindsym XF86AudioStop exec --no-startup-id ~/scripts/ctlMedia/stop.sh
+bindsym XF86AudioNext exec --no-startup-id ~/scripts/ctlMedia/next.sh
+bindsym XF86AudioPrev exec --no-startup-id ~/scripts/ctlMedia/previous.sh
+# for HHKB Pro
+#bindsym Print exec --no-startup-id mocp --toggle-pause
+#bindsym Prior exec --no-startup-id mocp --next
+#bindsym Home exec --no-startup-id mocp --previous
+#
+# display
+bindsym XF86Display exec --no-startup-id ~/scripts/monitor/chPrimary.sh
+# screensaver
+bindsym XF86ScreenSaver exec --no-startup-id ~/.config/i3/lock.sh
+
+
+## bumblebee-status
+#bar {
+#        tray_output none
+#        font pango:PowerlineSymbols, FontAwesome 10
+#        status_command ~/Repositories/bumblebee-status/bumblebee-status -d -m nic spacer memory spacer disk spacer pasink spacer battery datetime -p disk.path=/ datetime.format="%Y/%m/%d (%a) at %H:%M" -t bumblebee
+#        position top
+#}
+
+
+mode " mouse" {
+
+    # cursor speeds
+    set $slow 3
+    set $quick 10
+    set $fast 50
+
+    ##### vim keybindings #####
+    # Mouse movement (slow/fine-tuned)
+    bindsym Shift+$mod+h exec --no-startup-id xdotool mousemove_relative -- -$slow 0
+    bindsym Shift+$mod+j exec --no-startup-id xdotool mousemove_relative 0 $slow
+    bindsym Shift+$mod+k exec --no-startup-id xdotool mousemove_relative -- 0 -$slow
+    bindsym Shift+$mod+l exec --no-startup-id xdotool mousemove_relative $slow 0
+    # Mouse movement (quicker)
+    bindsym Shift+h exec --no-startup-id xdotool mousemove_relative -- -$quick 0
+    bindsym Shift+j exec --no-startup-id xdotool mousemove_relative 0 $quick
+    bindsym Shift+k exec --no-startup-id xdotool mousemove_relative -- 0 -$quick
+    bindsym Shift+l exec --no-startup-id xdotool mousemove_relative $quick 0
+    # Mouse movement (fast)
+    bindsym h exec --no-startup-id xdotool mousemove_relative -- -$fast 0
+    bindsym j exec --no-startup-id xdotool mousemove_relative 0 $fast
+    bindsym k exec --no-startup-id xdotool mousemove_relative -- 0 -$fast
+    bindsym l exec --no-startup-id xdotool mousemove_relative $fast 0
+    ###########################
+    
+    ##### arrow keys ##########
+    # Mouse movement (slow/fine-tuned)
+    #bindsym Left exec xdotool mousemove_relative -- -$slow 0
+    #bindsym Down exec xdotool mousemove_relative 0 $slow
+    #bindsym Up exec xdotool mousemove_relative -- 0 -$slow
+    #bindsym Right exec xdotool mousemove_relative $slow 0
+    # Mouse movement (quicker)
+    #bindsym Shift+Left exec xdotool mousemove_relative -- -$quick 0
+    #bindsym Shift+Down exec xdotool mousemove_relative 0 $quick
+    #bindsym Shift+Up exec xdotool mousemove_relative -- 0 -$quick
+    #bindsym Shift+Right exec xdotool mousemove_relative $quick 0
+    # Mouse movement (fast)
+    #bindsym Shift+$mod+Left exec xdotool mousemove_relative -- -$fast 0
+    #bindsym Shift+$mod+Down exec xdotool mousemove_relative 0 $fast
+    #bindsym Shift+$mod+Up exec xdotool mousemove_relative -- 0 -$fast
+    #bindsym Shift+$mod+Right exec xdotool mousemove_relative $fast 0
+    ###########################
+
+
+    ##### Left Click #####
+    # Click
+    bindsym s exec --no-startup-id xdotool click 1
+    # Click-and-drag
+    bindsym Shift+s exec --no-startup-id xdotool mousedown 1
+    # Drag release
+    bindsym $mod+s exec --no-startup-id xdotool mouseup 1
+    ######################
+
+    ##### Middle Click ###
+    # Click
+    bindsym d exec --no-startup-id xdotool click 2
+    # Click-and-drag
+    bindsym Shift+d exec --no-startup-id xdotool mousedown 2
+    # Drag release
+    bindsym $mod+d exec --no-startup-id xdotool mouseup 2
+    ######################
+
+    ##### Right Click ####
+    # Click
+    bindsym f exec --no-startup-id xdotool click 3
+    # Click-and-drag
+    bindsym Shift+f exec --no-startup-id xdotool mousedown 3
+    # Drag release
+    bindsym $mod+f exec --no-startup-id xdotool mouseup 3
+    ######################
+
+    # return to normal keybindings
+    bindsym Escape mode "default"
+}
+
+#bindsym $mod+$mod2+Shift+m mode "mouse"
+bindsym $mod+Shift+m mode " mouse"
