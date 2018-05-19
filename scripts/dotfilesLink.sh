@@ -43,8 +43,10 @@ rm ~/.bashrc
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
 rm ~/.Xdefaults
 ln -sf ~/dotfiles/.Xdefaults ~/.Xdefaults
-rm ~/.gruvboxDark.json
-ln -sf ~/dotfiles/.gruvboxDark.json ~/.gruvboxDark.json
+#rm ~/.gruvboxDark.json
+#ln -sf ~/dotfiles/.gruvboxDark.json ~/.gruvboxDark.json
+rm ~/.zenburn.json
+ln -sf ~/dotfiles/.zenburn.json ~/.zenburn.json
 rm ~/.keynavrc
 ln -sf ~/dotfiles/.keynavrc ~/.keynavrc
 
