@@ -5,6 +5,8 @@ rm -r ~/.config/i3
 ln -sf ~/dotfiles/.config/i3 ~/.config
 rm ~/.config/ranger/rc.conf
 ln -sf ~/dotfiles/.config/ranger/rc.conf ~/.config/ranger
+rm ~/.config/ranger/scope.sh
+ln -sf ~/dotfiles/.config/ranger/scope.sh ~/.config/ranger
 rm ~/.config/qutebrowser/config.py
 ln -sf ~/dotfiles/.config/qutebrowser/config.py ~/.config/qutebrowser
 rm ~/.config/polybar/config

@@ -16,3 +16,4 @@ cp ~/.XmodmapHHKB ~/.Xmodmap
 
 setxkbmap -option
 xmodmap ~/.Xmodmap
+xmodmap ~/.Xmodmap

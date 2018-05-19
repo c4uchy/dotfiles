@@ -73,6 +73,7 @@ for_window [class="URxvt" instance="floating"] floating enable
 for_window [class="VirtualBox" title="^Tails"] move workspace $ws5 
 for_window [class="map.MainApp"] floating enable,resize set 800 600 
 for_window [class="Arandr"] floating enable 
+for_window [class="Nemo"] floating enable, resize set 800 600, move position center 
 for_window [class="Genymotion Player" instance="player"] floating enable,move down 
 #for_window [title="video0 - mpv"] floating enable 
 for_window [class="mpv"] floating enable, border none 
@@ -81,7 +82,8 @@ for_window [title="video0 - mpv"] sticky enable
 
 # Set colors
 set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
+#set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $bg i3wm.color8 #f0f0f0
 
 
 ## border 
@@ -203,6 +205,8 @@ bindsym $mod+Shift+h exec $term -name floating -e ~/scripts/sshVM/kali.sh
 bindsym $mod+u exec $term -name floating -e ~/scripts/sshVM/lubuntu.sh
 # line
 #bindsym $mod+n exec ~/scripts/line.sh &
+# nemo
+bindsym $mod+n exec --no-startup-id nemo
 # play video with link in clipbord
 bindsym $mod+Shift+v exec --no-startup-id mpv --autofit=80% `xsel -b -o`; workspace $ws9
 # mocp

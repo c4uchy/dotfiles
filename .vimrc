@@ -26,7 +26,6 @@ set virtualedit=onemore
 set smartindent
 set visualbell
 set showmatch
-set laststatus=2
 set wildmode=list:longest
 nnoremap j gj
 nnoremap k gk
@@ -65,6 +64,9 @@ Plug 'justmao945/vim-clang'
 Plug 'thinca/vim-quickrun'
 "Plug 'dylanaraps/wal.vim'
 Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tomasr/molokai'
+Plug 'jnurmine/zenburn'
 Plug 'itchyny/calendar.vim'
 "Plug 'mrtazz/simplenote.vim'
 "Plug 'vim-scripts/head.vim'
@@ -84,7 +86,8 @@ autocmd BufNewFile,BufRead *.pde nnoremap <C-e> :make<CR>
 autocmd BufNewFile,BufRead *.md nnoremap <C-e> :PrevimOpen<CR>
 autocmd BufNewFile,BufRead *.md nnoremap <C-p> :!~/scripts/texMarkDown/outputPDF.sh %:r<CR>
 autocmd BufNewFile,BufRead *.md nnoremap <C-t> :!~/scripts/texMarkDown/outputHTML.sh<CR>
-autocmd BufNewFile,BufRead *.c nnoremap <C-r> :!clang -o '%:r' '%'<CR>
+autocmd BufNewFile,BufRead *.c nnoremap <C-c> :!clang -o '%:r' '%'<CR>
+autocmd BufNewFile,BufRead *.c nnoremap <C-g> :!gcc -lm -Wall '%' -o '%:r'<CR>
 autocmd BufNewFile,BufRead *.c nnoremap <C-e> :!./'%:r'<CR>
 
 
@@ -93,16 +96,18 @@ let g:vim_markdown_folding_disabled = 1
 
 
 "" pywal
-"  colorscheme wal
+"colorscheme wal
 
+"colorscheme jellybeans
+colorscheme zenburn
 
 "" gruvbox
-colorscheme gruvbox
-set background=dark    " Setting dark mode
-"set background=light   " Setting light mode
-" transparency background
+"colorscheme gruvbox
+"set background=dark    " Setting dark mode
+""set background=light   " Setting light mode
+"" transparency background
 highlight Normal ctermbg=None    
-"hi Normal guibg=NONE ctermbg=NONE
+""hi Normal guibg=NONE ctermbg=NONE
 
 
 "" vimtex
@@ -123,9 +128,32 @@ let g:vimtex_view_general_viewer = 'mupdf'
 
 
 "" powerline
-set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
+"set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
+"set laststatus=2
+"set t_Co=256
+
+"" statusline
 set laststatus=2
-set t_Co=256
+" Filename
+set statusline=%F
+" Edited
+set statusline+=%m
+" Read-only
+set statusline+=%r
+" HELP page
+set statusline+=%h
+" Prevew window
+set statusline+=%w
+" Right-aligned
+set statusline+=%=
+" File encoding and ff
+set statusline+=[%{&fileencoding}:%{&ff}]
+set statusline+=\ 
+" File type
+set statusline+=%y 
+set statusline+=\ 
+" Current Line : Column / Total num of Lines
+set statusline+=[%l:%c/%L]
 
 
 " autopep
