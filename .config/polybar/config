@@ -14,15 +14,22 @@
 ;background = #00000000
 ; transparency 80%
 ;background = #cc282828
-background = #cc2f2f2f
+;background = #cc2f2f2f ; zenburn
+;background = #cc002b36 ; solarized
+;background = #cc000000
+background = #a5000000
 background-alt = #444
 ; for pywal
 ;foreground = ${xrdb:color7}
-foreground = ${xrdb:color15}
+;foreground = ${xrdb:color15} ; zenburn
+;foreground = ${xrdb:color14} ; solarized
+;foreground = #839496
+foreground = #ffffff
+foreground-alt = #ffffff
 ;foreground = #dfdfdf
 ; for pywal
 ;foreground-alt = #555
-foreground-alt = #BDBDBD
+;foreground-alt = #BDBDBD
 ;foreground-alt = ${xrdb:color15}
 primary = ${xrdb:color3}
 ;primary = ${xrdb:color3}
@@ -61,20 +68,20 @@ module-margin-left = 1
 module-margin-right = 2
 
 ;font-0= monospace:pixelsize=10;1
-font-0= DejaVuSansMono:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-0= DejaVuSansMono:pixelsize=10;2
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;2
 ;font-2 = siji:size=24;1
-font-2 = FontAwesome:size=10;1
+font-2 = FontAwesome:size=10;2
 ;font-3= pomicons=10;1
 ;font-3 = Wuncon Siji:size=10;1
 ;font-4= HanaMinA:size=12;1
 ;font-4= sazanami gothic:size=12;1
-font-3= IPAexGothic:size=10;1
-font-4= DejaVuSansMono Nerd Font:style=Bold:size=12;1
+font-3= IPAexGothic:size=10;2
+font-4= DejaVuSansMono Nerd Font:style=Bold:size=12;2
 ;font-4= FuraCode Nerd Font:style=Bold:size=20;1
 
 ; left color : green
-modules-left = i3 music
+modules-left = i3 music batteryLow
 ;mocp 
 ;pomodoro
 ;modules-center = pomodoro
@@ -200,7 +207,7 @@ label-focused-background = ${module/bspwm.label-focused-background}
 ;label-focused-underline = ${xrdb:color2}
 ;label-focused-underline = ${xrdb:color12}
 ;label-focused-underline = ${xrdb:color14}
-label-focused-underline = ${xrdb:color8}
+;label-focused-underline = ${xrdb:color14}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
@@ -210,7 +217,7 @@ label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 ; visible = Active workspace on unfocused monitor
 ;label-visible = %index%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
+;label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
@@ -264,7 +271,7 @@ interval = 1
 format = <label>
 format-prefix = " "
 exec = ~/.config/polybar/music_on_console
-format-underline = ${xrdb:color12}
+;format-underline = ${xrdb:color12}
 click-left = mocp -f
 click-right = mocp -r
 click-middle = mocp -P
@@ -273,7 +280,7 @@ click-middle = mocp -P
 type = custom/script
 interval = 10
 format = <label>
-format-underline = ${xrdb:color8}
+format-underline = ${xrdb:color14}
 exec = ~/.config/polybar/weathericons
 
 [module/pomodoro]
@@ -328,7 +335,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color6}
+format-underline = ${xrdb:color14}
 label = %percentage_used%%
 ;label = %mb_used%%
 
@@ -338,9 +345,9 @@ interval = 2
 exec = ~/.config/polybar/readmeminfo.py
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${xrdb:color6}
 ;format-underline = ${xrdb:color14}
-format-underline = ${xrdb:color8}
+;format-underline = ${xrdb:color14}
+;format-underline = ${xrdb:color14}
 
 [module/wlan]
 type = internal/network
@@ -350,7 +357,7 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 ;format-connected-underline = ${xrdb:color5}
 ;format-connected-underline = ${xrdb:color14}
-format-connected-underline = ${xrdb:color8}
+;format-connected-underline = ${xrdb:color14}
 ;format-connected-underline = #9f78e1
 ;label-connected = %essid%
 ;label-connected = %local_ip%
@@ -377,7 +384,7 @@ interval = 3.0
 
 ;format-connected-underline = ${xrdb:color2}
 ;format-connected-underline = ${xrdb:color10}
-format-connected-underline = ${xrdb:color8}
+;format-connected-underline = ${xrdb:color14}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 #label-connected = %local_ip%
@@ -396,9 +403,9 @@ date = " %A, %B %d"
 ;time = "%H:%M "
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${xrdb:color4}
 ;format-underline = ${xrdb:color14}
-format-underline = ${xrdb:color8}
+;format-underline = ${xrdb:color14}
+;format-underline = ${xrdb:color14}
 ;label = %date% %time%
 label = %date%
 
@@ -410,7 +417,7 @@ format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${xrdb:color12}
 ;format-underline = ${xrdb:color14}
-format-underline = ${xrdb:color8}
+;format-underline = ${xrdb:color14}
 
 [module/volume]
 type = internal/pulseaudio
@@ -431,7 +438,7 @@ bar-volume-foreground-2 = ${xrdb:color10}
 bar-volume-foreground-3 = ${xrdb:color10}
 bar-volume-foreground-4 = ${xrdb:color10}
 bar-volume-foreground-5 = ${xrdb:color11}
-bar-volume-foreground-6 = ${xrdb:color1}
+bar-volume-foreground-6 = ${xrdb:color12}
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -440,6 +447,14 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/batteryLow]
+type = custom/script
+interval = 1
+format = <label>
+format-prefix = " "
+format-foreground = #FF0000
+exec = ~/.config/polybar/batteryLow.sh
 
 [module/battery]
 type = internal/battery
@@ -451,15 +466,15 @@ full-at = 98
 format-charging = <animation-charging> <label-charging>
 ;format-charging-underline = ${xrdb:color13}
 ;format-charging-underline = ${xrdb:color14}
-format-charging-underline = ${xrdb:color8}
+;format-charging-underline = ${xrdb:color14}
 
 #format-discharging = <label-discharging> 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-full-underline = ${self.format-charging-underline}
 
 ;ramp-capacity-0 = 
 ;ramp-capacity-1 = 
@@ -489,10 +504,10 @@ warn-temperature = 60
 
 format = <ramp> <label>
 ;format-underline = ${xrdb:color14}
-format-underline = ${xrdb:color8}
+;format-underline = ${xrdb:color14}
 ;format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;format-warn-underline = ${self.format-underline}
 
 label = %temperature%
 label-warn = %temperature%

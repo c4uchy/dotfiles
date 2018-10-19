@@ -12,7 +12,12 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 ##wal -R -a 80
 feh --bg-scale ~/.config/i3/wall.png
 #wal -f ~/.gruvboxDark.json -a 80
-wal -f ~/.zenburn.json -a 80
+#wal -f ~/.zenburn.json -a 80
+#wal -f ~/.solarized.json -a 95
+#wal -f ~/.tomorrow_night.json -a 95
+#wal -f ~/.cyb.json -a 80
+wal -f ~/.lucius_dark_high.json -a 85
+#wal -f ~/coolglow.json -a 95
 #wal -f ~/gruvboxDark.json
 polybar example &
 

@@ -106,7 +106,12 @@ case "$mimetype" in
             pygmentize_format=terminal
             highlight_format=ansi
         fi
-        try safepipe highlight --out-format=${highlight_format} --style=zenburn "$path" && { dump | trim; exit 5; }
+        #try safepipe highlight --out-format=${highlight_format} --style=zenburn "$path" && { dump | trim; exit 5; }
+        #try safepipe highlight --out-format=${highlight_format} --style=solarized-dark "$path" && { dump | trim; exit 5; }
+        #try safepipe highlight --out-format=${highlight_format} --style=base16/tomorrow-night "$path" && { dump | trim; exit 5; }
+        try safepipe highlight --out-format=${highlight_format} --style=freya "$path" && { dump | trim; exit 5; }
+        #try safepipe highlight --out-format=${highlight_format} --style=manxome "$path" && { dump | trim; exit 5; }
+        #try safepipe highlight --out-format=${highlight_format} --style=night "$path" && { dump | trim; exit 5; }
         try safepipe pygmentize -f ${pygmentize_format} "$path" && { dump | trim; exit 5; }
         exit 2;;
     # Ascii-previews of images:

@@ -135,6 +135,13 @@ fi
 PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
 MANPATH="/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH"
 
+# java
+#PATH="/usr/lib/jvm/java-10-jdk/bin/javac:$PATH"
+#PATH="/usr/lib/jvm/java-10-jdk/bin/java:$PATH"
+#alias javac='/usr/lib/jvm/java-10-jdk/bin/javac'
+#alias java='/usr/lib/jvm/java-10-jdk/bin/java'
+#alias java='/usr/lib/jvm/java-8-openjdk/bin/java'
+#alias java='/usr/lib/jvm/java-8-openjdk/bin/javac'
 
 # alias
 alias mocpt='mocp -T transparent-background'
@@ -161,7 +168,8 @@ alias bt='bluetoothctl'
 
 # prompt coloar
 #export PS1='\[\033[40;1;32m\]\W \[\033[40;2;37m\]\t\[\033[0m\] $ '
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+#export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 4)\]\u\[$(tput setaf 4)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 4)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
 
 # for urxvt bug on tiling

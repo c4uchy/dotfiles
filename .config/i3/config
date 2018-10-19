@@ -16,7 +16,7 @@ floating_modifier $mod
 # compositor
 exec --no-startup-id compton -b
 # keynav
-exec --no-startup-id keynav
+#exec --no-startup-id keynav
 # dropbox
 exec --no-startup-id dropbox
 # mpd
@@ -35,14 +35,16 @@ exec --no-startup-id redshift -t 6500:3700
 # polybar
 exec --no-startup-id ~/.config/polybar/launch.sh
 # setup Keybouard Layout
-exec --no-startup-id ~/scripts/keyboard/setKeyLayout.sh
+#exec --no-startup-id ~/scripts/keyboard/setKeyLayout.sh
 #exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
 # hhkb plug in/out daemon
-exec --no-startup-id python ~/scripts/keyboard/hhkb_event.py
+#exec --no-startup-id python ~/scripts/keyboard/hhkb_event.py
+# usb keyboard plug in daemon
+exec --no-startup-id python ~/scripts/keyboard/usbKeyboard_ev.py
 # bluetooth earphone daemon
-#exec --no-startup-id python ~/scripts/polybar/bt_bar.py
+exec --no-startup-id python ~/scripts/polybar/bt_bar.py
 # bluetooth keyboard daemon
-exec --no-startup-id python ~/scripts/keyboard/bt_keyboard.py
+#exec --no-startup-id python ~/scripts/keyboard/bt_keyboard.py
 # screenlock
 #exec --no-startup-id xss-lock -- i3lock -e -i ~/.config/i3/lock1HD.png &
 # start fcitx
@@ -51,7 +53,7 @@ exec --no-startup-id fcitx
 
 ## Needed for i3-gaps   
 hide_edge_borders both
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 gaps inner 10   
 gaps outer 0 
 bindsym $mod+t gaps inner all set 10; gaps outer all set 0
@@ -81,9 +83,15 @@ for_window [title="video0 - mpv"] sticky enable
 
 
 # Set colors
-set_from_resource $fg i3wm.color7 #f0f0f0
+#set_from_resource $fg i3wm.color7 #f0f0f0
 #set_from_resource $bg i3wm.color2 #f0f0f0
-set_from_resource $bg i3wm.color8 #f0f0f0
+#set_from_resource $bg i3wm.color8 #f0f0f0
+#set_from_resource $bg i3wm.color6 #f0f0f0
+#
+set_from_resource $fg color7 #f0f0f0
+set_from_resource $bg color6 #f0f0f0
+#set $fg #dddddd
+#set $bg #166b8c
 
 
 ## border 
@@ -98,7 +106,8 @@ client.unfocused        #000000 #000000 #000000 #000000
 # kill focused window
 bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -disable-history -show run
+#bindsym $mod+d exec rofi -disable-history -show run
+bindsym $mod+d exec --no-startup-id dmenu_run
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -192,7 +201,7 @@ bindsym $mod+m exec $term -name floating -e vim ~/Dropbox/Memo/`date +"%y%m%d_%H
 # spotify
 #bindsym $mod+Shift+m exec --no-startup-id spotify
 # arandr
-bindsym $mod+a exec --no-startup-id arandr
+bindsym $mod+Shift+m exec --no-startup-id arandr
 # gtop
 bindsym $mod+g exec --no-startup-id xterm -e gtop
 # htop
@@ -200,7 +209,7 @@ bindsym $mod+i exec $term -name floating -e htop
 # android
 bindsym $mod+Shift+g exec /opt/genymotion/player --vm-name b6435b36-62bb-4bad-b405-2ff21b5ee529 | "Custom Phone - 7.1.0 - API 25 - 768x1280"
 # kali linux
-bindsym $mod+Shift+h exec $term -name floating -e ~/scripts/sshVM/kali.sh
+#bindsym $mod+Shift+h exec $term -name floating -e ~/scripts/sshVM/kali.sh
 # Lubuntu
 bindsym $mod+u exec $term -name floating -e ~/scripts/sshVM/lubuntu.sh
 # line
@@ -208,7 +217,7 @@ bindsym $mod+u exec $term -name floating -e ~/scripts/sshVM/lubuntu.sh
 # nemo
 bindsym $mod+n exec --no-startup-id nemo
 # play video with link in clipbord
-bindsym $mod+Shift+v exec --no-startup-id mpv --autofit=80% `xsel -b -o`; workspace $ws9
+#bindsym $mod+Shift+v exec --no-startup-id mpv --autofit=80% `xsel -b -o`; workspace $ws9
 # mocp
 bindsym $mod+o exec $term -name floating -e mocp -T transparent-background
 # ranger
@@ -216,8 +225,10 @@ bindsym $mod+r exec export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
 
 
 ## operation keybindings
-bindsym $mod+Shift+x exec shutdown now
-bindsym $mod+Shift+BackSpace exec reboot
+#bindsym $mod+Shift+x exec shutdown now
+bindsym $mod+Shift+x exec --no-startup-id ~/scripts/prompt "Are you sure you want to shutdown?" "shutdown now"
+#bindsym $mod+Shift+BackSpace exec reboot
+bindsym $mod+Shift+BackSpace exec --no-startup-id ~/scripts/prompt "Are you sure you want to reboot?" "reboot"
 # screenshot
 bindsym $mod+p exec --no-startup-id scrot -u -e 'mv $f ~/Pictures/screenshot/'
 bindsym $mod+Shift+p exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshot/'
@@ -228,7 +239,8 @@ bindsym $mod+c exec --no-startup-id ~/.config/polybar/launch.sh
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id ~/scripts/prompt "Are you sure you want to leave i3?" "i3-msg exit"
 #
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
@@ -243,8 +255,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
 ## for HHKB Pro
-bindsym Pause exec --no-startup-id light -A 5 # increase screen brightness
-bindsym Scroll_Lock exec --no-startup-id light -U 5 # decrease screen brightness
+#bindsym Pause exec --no-startup-id light -A 5 # increase screen brightness
+#bindsym Scroll_Lock exec --no-startup-id light -U 5 # decrease screen brightness
 #
 # Media player controls
 #bindsym XF86AudioPlay exec ~/scripts/mpdPlayPause.sh
@@ -281,26 +293,43 @@ bindsym XF86ScreenSaver exec --no-startup-id ~/.config/i3/lock.sh
 mode " mouse" {
 
     # cursor speeds
-    set $slow 3
-    set $quick 10
-    set $fast 50
+    set $slow 2
+    set $quick 30
+    set $fast 100
 
     ##### vim keybindings #####
+    ### right hand
     # Mouse movement (slow/fine-tuned)
-    bindsym Shift+$mod+h exec --no-startup-id xdotool mousemove_relative -- -$slow 0
-    bindsym Shift+$mod+j exec --no-startup-id xdotool mousemove_relative 0 $slow
-    bindsym Shift+$mod+k exec --no-startup-id xdotool mousemove_relative -- 0 -$slow
-    bindsym Shift+$mod+l exec --no-startup-id xdotool mousemove_relative $slow 0
+    bindsym y exec --no-startup-id xdotool mousemove_relative -- -$slow 0
+    bindsym u exec --no-startup-id xdotool mousemove_relative 0 $slow
+    bindsym i exec --no-startup-id xdotool mousemove_relative -- 0 -$slow
+    bindsym o exec --no-startup-id xdotool mousemove_relative $slow 0
     # Mouse movement (quicker)
-    bindsym Shift+h exec --no-startup-id xdotool mousemove_relative -- -$quick 0
-    bindsym Shift+j exec --no-startup-id xdotool mousemove_relative 0 $quick
-    bindsym Shift+k exec --no-startup-id xdotool mousemove_relative -- 0 -$quick
-    bindsym Shift+l exec --no-startup-id xdotool mousemove_relative $quick 0
-    # Mouse movement (fast)
-    bindsym h exec --no-startup-id xdotool mousemove_relative -- -$fast 0
-    bindsym j exec --no-startup-id xdotool mousemove_relative 0 $fast
-    bindsym k exec --no-startup-id xdotool mousemove_relative -- 0 -$fast
-    bindsym l exec --no-startup-id xdotool mousemove_relative $fast 0
+    bindsym h exec --no-startup-id xdotool mousemove_relative -- -$quick 0
+    bindsym j exec --no-startup-id xdotool mousemove_relative 0 $quick
+    bindsym k exec --no-startup-id xdotool mousemove_relative -- 0 -$quick
+    bindsym l exec --no-startup-id xdotool mousemove_relative $quick 0
+    ## Mouse movement (fast)
+    #bindsym h exec --no-startup-id xdotool mousemove_relative -- -$fast 0
+    #bindsym j exec --no-startup-id xdotool mousemove_relative 0 $fast
+    #bindsym k exec --no-startup-id xdotool mousemove_relative -- 0 -$fast
+    #bindsym l exec --no-startup-id xdotool mousemove_relative $fast 0
+    ### left hand
+    # Mouse movement (slow/fine-tuned)
+    bindsym q exec --no-startup-id xdotool mousemove_relative -- -$slow 0
+    bindsym w exec --no-startup-id xdotool mousemove_relative 0 $slow
+    bindsym e exec --no-startup-id xdotool mousemove_relative -- 0 -$slow
+    bindsym r exec --no-startup-id xdotool mousemove_relative $slow 0
+    # Mouse movement (quicker)
+    bindsym a exec --no-startup-id xdotool mousemove_relative -- -$quick 0
+    bindsym s exec --no-startup-id xdotool mousemove_relative 0 $quick
+    bindsym d exec --no-startup-id xdotool mousemove_relative -- 0 -$quick
+    bindsym f exec --no-startup-id xdotool mousemove_relative $quick 0
+    ## Mouse movement (fast)
+    #bindsym a exec --no-startup-id xdotool mousemove_relative -- -$fast 0
+    #bindsym s exec --no-startup-id xdotool mousemove_relative 0 $fast
+    #bindsym d exec --no-startup-id xdotool mousemove_relative -- 0 -$fast
+    #bindsym f exec --no-startup-id xdotool mousemove_relative $fast 0
     ###########################
     
     ##### arrow keys ##########
@@ -323,35 +352,65 @@ mode " mouse" {
 
 
     ##### Left Click #####
+    ### right hand
     # Click
-    bindsym s exec --no-startup-id xdotool click 1
+    bindsym z exec --no-startup-id xdotool click 1
     # Click-and-drag
-    bindsym Shift+s exec --no-startup-id xdotool mousedown 1
+    #bindsym Shift+v exec --no-startup-id xdotool mousedown 1
+    bindsym v exec --no-startup-id xdotool mousedown 1
     # Drag release
-    bindsym $mod+s exec --no-startup-id xdotool mouseup 1
+    #bindsym $mod+v exec --no-startup-id xdotool mouseup 1
+    bindsym b exec --no-startup-id xdotool mouseup 1
+    ### left hand
+    # Click
+    bindsym n exec --no-startup-id xdotool click 1
+    # Click-and-drag
+    #bindsym Shift+v exec --no-startup-id xdotool mousedown 1
+    bindsym period exec --no-startup-id xdotool mousedown 1
+    # Drag release
+    #bindsym $mod+v exec --no-startup-id xdotool mouseup 1
+    bindsym slash exec --no-startup-id xdotool mouseup 1
     ######################
 
     ##### Middle Click ###
+    ### right handd
     # Click
-    bindsym d exec --no-startup-id xdotool click 2
+    bindsym m exec --no-startup-id xdotool click 2
     # Click-and-drag
-    bindsym Shift+d exec --no-startup-id xdotool mousedown 2
+    bindsym p exec --no-startup-id xdotool click 4
     # Drag release
-    bindsym $mod+d exec --no-startup-id xdotool mouseup 2
+    bindsym semicolon exec --no-startup-id xdotool click 5
+    ### left hand
+    # Click
+    bindsym x exec --no-startup-id xdotool click 2
+    ## Click-and-drag
+    bindsym t exec --no-startup-id xdotool click 4
+    ## Drag release
+    bindsym g exec --no-startup-id xdotool click 5
     ######################
 
     ##### Right Click ####
+    ### right hand
     # Click
-    bindsym f exec --no-startup-id xdotool click 3
-    # Click-and-drag
-    bindsym Shift+f exec --no-startup-id xdotool mousedown 3
-    # Drag release
-    bindsym $mod+f exec --no-startup-id xdotool mouseup 3
+    bindsym comma exec --no-startup-id xdotool click 3
+    ## Click-and-drag
+    #bindsym Shift+n exec --no-startup-id xdotool mousedown 3
+    ## Drag release
+    #bindsym $mod+n exec --no-startup-id xdotool mouseup 3
+    ### left hand
+    # Click
+    bindsym c exec --no-startup-id xdotool click 3
+    ## Click-and-drag
+    #bindsym Shift+n exec --no-startup-id xdotool mousedown 3
+    ## Drag release
+    #bindsym $mod+n exec --no-startup-id xdotool mouseup 3
     ######################
 
     # return to normal keybindings
     bindsym Escape mode "default"
+    bindsym apostrophe mode "default"
 }
 
 #bindsym $mod+$mod2+Shift+m mode "mouse"
-bindsym $mod+Shift+m mode " mouse"
+bindsym $mod+apostrophe mode " mouse"
+bindsym $mod+a mode " mouse"

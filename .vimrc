@@ -19,7 +19,8 @@ noremap! <C-j> <esc>
 
 
 "" look
-syntax on
+"syntax on
+syntax enable
 set number
 set relativenumber
 set virtualedit=onemore
@@ -69,7 +70,15 @@ Plug 'tomasr/molokai'
 Plug 'jnurmine/zenburn'
 Plug 'itchyny/calendar.vim'
 "Plug 'mrtazz/simplenote.vim'
+"Plug 'mattn/vimplenote-vim'
+"Plug 'mattn/webapi-vim'
 "Plug 'vim-scripts/head.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'jdkanani/vim-material-theme'
+Plug 'jonathanfilip/vim-lucius'
 
 call plug#end()
 
@@ -95,11 +104,32 @@ autocmd BufNewFile,BufRead *.c nnoremap <C-e> :!./'%:r'<CR>
 let g:vim_markdown_folding_disabled = 1
 
 
+" lucius
+let g:lucius_style = 'dark'
+let g:lucius_contrast = 'high'
+let g:lucius_contrast_bg = 'normal'
+colorscheme lucius
+
 "" pywal
 "colorscheme wal
 
 "colorscheme jellybeans
-colorscheme zenburn
+"colorscheme zenburn
+"
+"set background=dark    " Setting dark mode
+"colorscheme solarized
+"colorscheme Tomorrow-Night
+
+"colorscheme onedark
+"set t_Co=256
+"set background=dark
+"if !has('gui_running')
+"  let g:solarized_termcolors=&t_Co
+"  let g:solarized_termtrans=1
+"endif
+"colorscheme solarized
+"set background=dark
+"colorscheme material-theme
 
 "" gruvbox
 "colorscheme gruvbox
@@ -124,6 +154,7 @@ let g:vimtex_compiler_latexmk = {
             \   '-interaction=nonstopmode',
             \ ],
             \}
+let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
 let g:vimtex_view_general_viewer = 'mupdf'
 
 
@@ -184,7 +215,7 @@ endfunction
 " keymap
 nnoremap <S-f> :call Autopep8()<CR>
 " auto
-autocmd BufWrite *.{py} :call Autopep8()
+""""""""""""""""""""autocmd BufWrite *.{py} :call Autopep8()
 
 
 "" Memo Dropbox
@@ -208,3 +239,4 @@ let g:clang_format_auto = 1
 
 "" clipboard
 set clipboard=unnamedplus
+
