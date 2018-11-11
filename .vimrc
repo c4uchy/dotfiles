@@ -55,7 +55,8 @@ Plug 'lervag/vimtex'
 Plug 'jeetsukumaran/vim-nefertiti'
 Plug 'limadm/vim-blues'
 Plug 'plasticboy/vim-markdown'
-Plug 'kannokanno/previm'
+"Plug 'kannokanno/previm'
+Plug 'previm/previm'
 Plug 'tyru/open-browser.vim'
 Plug 'vim-scripts/fcitx.vim'
 Plug 'sophacles/vim-processing'
@@ -213,22 +214,30 @@ function! Autopep8()
     call Preserve(':silent %!autopep8 --ignore=E501 -')
 endfunction
 " keymap
-nnoremap <S-f> :call Autopep8()<CR>
+"nnoremap <S-f> :call Autopep8()<CR>
 " auto
-""""""""""""""""""""autocmd BufWrite *.{py} :call Autopep8()
+"autocmd BufWrite *.{py} :call Autopep8()
 
 
 "" Memo Dropbox
-function! DropboxMemo()
-  ""let str = systemlist('date +"%y%m%d_%H%M_%S".md')[0]
-  ""let str = systemlist('head -n 1 "%"')[0]
-  ""let head = system("head -n 1 " . shellescape(expand('%:p')))
-  let str = system("python ~/scripts/memotool/getHeadData.py " . shellescape(expand('%:p')))
-  ""let str = substitute(head, '^\s*\(.\{-}\)\s*$', '\1', '')
-  call rename(expand('%'), expand('%:p:h') . "/" . str)
-  ""call rename(expand('%'), str)
-endfunction
-autocmd BufWritePost */Dropbox/Memo/*.{md} :call DropboxMemo()
+"function! DropboxMemo()
+"  ""let str = systemlist('date +"%y%m%d_%H%M_%S".md')[0]
+"  ""let str = systemlist('head -n 1 "%"')[0]
+"  ""let head = system("head -n 1 " . shellescape(expand('%:p')))
+"  let str = system("python ~/scripts/memotool/getHeadData.py " . shellescape(expand('%:p')))
+"  ""let str = substitute(head, '^\s*\(.\{-}\)\s*$', '\1', '')
+"  call rename(expand('%'), expand('%:p:h') . "/" . str)
+"  ""call rename(expand('%'), str)
+"endfunction
+"autocmd BufWritePost */Dropbox/Memo/*.{md} :call DropboxMemo()
+
+"function! Typora()
+"    " Launch Typora
+"    call system("typora " . expand('%:p'))
+"    setlocal autoread
+"endfunction
+
+"command! Typora call Typora()
 
 
 "" set clang options for vim-clang
@@ -240,3 +249,6 @@ let g:clang_format_auto = 1
 "" clipboard
 set clipboard=unnamedplus
 
+"" previm
+let g:previm_open_cmd = 'chromium'
+let g:previm_enable_realtime = 1

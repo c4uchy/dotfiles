@@ -196,7 +196,8 @@ bindsym $mod+w exec --no-startup-id $browser
 # web camera
 bindsym $mod+Shift+w exec --no-startup-id ~/scripts/camtoggle.sh
 # memo
-bindsym $mod+m exec $term -name floating -e vim ~/Dropbox/Memo/`date +"%y%m%d_%H%M_%S"`.md
+bindsym $mod+m exec --no-startup-id $term -name floating -e bash ~/scripts/open_memo.sh
+#bindsym $mod+m exec $term -name floating -e vim ~/Dropbox/Memo/`date +"%y%m%d_%H%M_%S"`.md
 #bindsym $mod+Shift+m exec export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH" && $term -name floating -e ranger ~/Dropbox/Memo
 # spotify
 #bindsym $mod+Shift+m exec --no-startup-id spotify
