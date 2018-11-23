@@ -4,7 +4,8 @@ URxvt.saveLines:            10000
 
 !! Fonts
 URxvt.allow_bold:           false
-URxvt.font: xft:Inconsolata\ for\ Powerline:size=11, xft:IPAGothic:size=10
+!URxvt.font: xft:Inconsolata\ for\ Powerline:size=11, xft:IPAGothic:size=10
+URxvt.font: xft:Inconsolata:size=11, xft:IPAexGothic:size=10
 
 !! Scrollbar
 URxvt.scrollStyle:          rxvt
@@ -337,22 +338,22 @@ URxvt.cursorUnderline:      false
 
 
 !! LuciusDarkHighContrast
-!*background:  #303030
-!*foreground:  #eeeeee
-!*cursorColor: #afd7ff
-!*color0:      #303030
-!*color8:      #303030
-!*color1:      #ff8787
-!*color9:      #ff8787
-!*color2:      #d7ffaf
-!*color10:     #d7ffaf
-!*color3:      #ffffd7
-!*color11:     #ffffd7
-!*color4:      #afffff
-!*color12:     #afffff
-!*color5:      #ffd7ff
-!*color13:     #ffd7ff
-!*color6:      #afffd7
-!*color14:     #afffd7
-!*color7:      #eeeeee
-!*color15:     #eeeeee
+*background:  #303030
+*foreground:  #eeeeee
+*cursorColor: #afd7ff
+*color0:      #303030
+*color8:      #303030
+*color1:      #ff8787
+*color9:      #ff8787
+*color2:      #d7ffaf
+*color10:     #d7ffaf
+*color3:      #ffffd7
+*color11:     #ffffd7
+*color4:      #afffff
+*color12:     #afffff
+*color5:      #ffd7ff
+*color13:     #ffd7ff
+*color6:      #afffd7
+*color14:     #afffd7
+*color7:      #eeeeee
+*color15:     #eeeeee

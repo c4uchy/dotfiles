@@ -26,7 +26,10 @@ def check_last_date():
         shutil.copy2(FILE_PATH, FILE_PATH.replace('.md', '_yesterday.md'))
         check_last_row()
         with open(FILE_PATH, 'a') as f:
-            f.write('## ' + now_date_string)
+            f.write('***')
+            f.write('\n')
+            f.write('\n')
+            f.write('## <u>*' + now_date_string + '*</u>')
 
 if __name__ == '__main__':
     check_last_date()

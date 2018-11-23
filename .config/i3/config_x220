@@ -13,33 +13,22 @@ font pango:DejaVu Sans Mono 10
 floating_modifier $mod
 
 #exec --no-startup-id XDG_CURRENT_DESKTOP=Gnome
-exec --no-startup-id gnome-flashback
 exec --no-startup-id /usr/lib/gsd-xsettings
+exec --no-startup-id gnome-flashback
 
 ## start program
 # compositor
 exec --no-startup-id compton -b
-# dropbox
-exec --no-startup-id dropbox
-# setup display
-#exec --no-startup-id ~/scripts/monitor/setupDisplay.sh
-# redshift
-#exec --no-startup-id redshift -t 6500:3700
-# polybar
-exec --no-startup-id ~/.config/polybar/launch.sh
-# usb keyboard plug in daemon
-#exec --no-startup-id python ~/scripts/keyboard/usbKeyboard_ev.py
-#exec --no-startup-id ~/scripts/keyboard/setKeyLayout.sh
-#exec --no-startup-id python ~/scripts/keyboard/thkb_event.py
-# bluetooth earphone daemon
-#exec --no-startup-id python ~/scripts/polybar/bt_bar.py
-# start fcitx
-#exec --no-startup-id fcitx
-#
 # keynav
 #exec --no-startup-id keynav
+# dropbox
+exec --no-startup-id dropbox
 # mpd
 #exec --no-startup-id mpd
+# setup display
+exec --no-startup-id ~/scripts/monitor/setupDisplay.sh
+# redshift
+exec --no-startup-id redshift -t 6500:3700
 # set wallpaper
 #exec --no-startup-id feh --bg-scale ~/.config/i3/wall.png
 # pywal
@@ -47,15 +36,23 @@ exec --no-startup-id ~/.config/polybar/launch.sh
 ## exec --no-startup-id wal -c
 ## exec --no-startup-id wal -i ~/.config/i3/wall.png -a 80
 ## exec --no-startup-id wal -R -a 80
+# polybar
+exec --no-startup-id ~/.config/polybar/launch.sh
 # setup Keybouard Layout
 #exec --no-startup-id ~/scripts/keyboard/setKeyLayout.sh
 #exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
 # hhkb plug in/out daemon
 #exec --no-startup-id python ~/scripts/keyboard/hhkb_event.py
+# usb keyboard plug in daemon
+exec --no-startup-id python ~/scripts/keyboard/usbKeyboard_ev.py
+# bluetooth earphone daemon
+exec --no-startup-id python ~/scripts/polybar/bt_bar.py
 # bluetooth keyboard daemon
 #exec --no-startup-id python ~/scripts/keyboard/bt_keyboard.py
 # screenlock
 #exec --no-startup-id xss-lock -- i3lock -e -i ~/.config/i3/lock1HD.png &
+# start fcitx
+exec --no-startup-id fcitx
 
 
 ## Needed for i3-gaps   
@@ -209,8 +206,7 @@ bindsym $mod+m exec --no-startup-id $term -name floating -e bash ~/scripts/open_
 # spotify
 #bindsym $mod+Shift+m exec --no-startup-id spotify
 # arandr
-#bindsym $mod+Shift+m exec --no-startup-id arandr
-bindsym $mod+Shift+m exec --no-startup-id gnome-control-center
+bindsym $mod+Shift+m exec --no-startup-id arandr
 # gtop
 bindsym $mod+g exec --no-startup-id xterm -e gtop
 # htop
@@ -224,8 +220,7 @@ bindsym $mod+u exec $term -name floating -e ~/scripts/sshVM/lubuntu.sh
 # line
 #bindsym $mod+n exec ~/scripts/line.sh &
 # nemo
-#bindsym $mod+n exec --no-startup-id nemo
-bindsym $mod+n exec --no-startup-id nautilus
+bindsym $mod+n exec --no-startup-id nemo
 # play video with link in clipbord
 #bindsym $mod+Shift+v exec --no-startup-id mpv --autofit=80% `xsel -b -o`; workspace $ws9
 # mocp

@@ -13,7 +13,9 @@ psgrep = stdoutdata = subprocess.getoutput("ps aux | grep [m]ocp")
 if ( "STOP" in state or not psgrep):
     print("")
 elif (not song or not album):
-    print(" " + state + " " + timeCurrent + " - " + timeTotal)
+    #print(" " + state + " " + timeCurrent + " - " + timeTotal)
+    print(" " + state + " " + timeCurrent + " - " + timeTotal)
 else:
-    print(" " + song + " - " + artist)
+    #print(" " + song + " - " + artist)
+    print(" " + song + " - " + artist)
 
